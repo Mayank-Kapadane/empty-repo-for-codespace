@@ -1,0 +1,19 @@
+{
+  "name": "mysql-latest",
+  // Use the compose file defined below
+  "dockerComposeFile": "docker-compose.yml",
+  // Which service VS Code / Codespaces should attach to
+  "service": "db",
+  // Automatically forward the MySQL port
+  "forwardPorts": [3306],
+  "portsAttributes": {
+    "3306": {
+      "label": "MySQL",
+      /* When true VS Code will prompt you for the
+         *local* port the first time it forwards 3306
+         so you can enter **5555**. */
+      "requireLocalPort": true        /* :contentReference[oaicite:0]{index=0} */
+    }
+  },
+  "postCreateCommand": "echo 'MySQL is ready – use gh codespace ports forward 3306:5555 (or VS Code Ports panel) to bind it to localhost:5555'"
+}

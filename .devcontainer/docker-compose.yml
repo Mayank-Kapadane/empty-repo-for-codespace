@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:latest          # always pulls the newest GA release
+    restart: unless-stopped
+    environment:
+      # --- mandatory ---
+      MYSQL_ROOT_PASSWORD: "root_password"   # <-- change!
+      # --- optional but handy for dev ---
+      MYSQL_DATABASE:  "app_db"
+      MYSQL_USER:      "app_user"
+      MYSQL_PASSWORD:  "app_user_password"
+    ports:
+      - "3306:3306"               # internal mapping; Codespaces still firewalls this
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
